@@ -10,12 +10,12 @@ function App() {
 
   function handleQuestionAnswered(correct) {
     if (currentQuestionId < questions.length) {
-      setCurrentQuestion((currentQuestionId) => currentQuestionId + 1);
+      setCurrentQuestion((id) => id + 1);
     } else {
       setCurrentQuestion(null);
     }
     if (correct) {
-      setScore((score) => score + 1);
+      setScore((s) => s + 1);
     }
   }
 
@@ -24,6 +24,7 @@ function App() {
       <section>
         {currentQuestion ? (
           <Question
+            key={currentQuestion.id}
             question={currentQuestion}
             onAnswered={handleQuestionAnswered}
           />
